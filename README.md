@@ -8,7 +8,7 @@
 1. 次のスクリプトをブックマークに追加する
 
 ```
-javascript: void !function(e){var t=e.createElement("script");t.type="text/javascript",t.src="///cdn.jsdelivr.net/gh/ssdh233/popn-class/dist/bundle.js",e.head.appendChild(t)}(document);
+javascript: void !function(e){var t=e.createElement("script");t.type="text/javascript",t.src="///cdn.jsdelivr.net/gh/sonohoshi/popn-class/dist/bundle.js",e.head.appendChild(t)}(document);
 ```
 
 ![add script to bookmark](readme_1.png)
