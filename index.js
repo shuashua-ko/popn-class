@@ -1,7 +1,7 @@
 async function wapper() {
   let domparser = new DOMParser();
 
-  const VERSION = "v1.0.2";
+  const VERSION = "v0.1 by kimsm";
   console.log("Running popn class script", VERSION);
 
   const MEDAL_BONUS = {
@@ -72,26 +72,13 @@ async function wapper() {
       });
   }
 
-  const promises = [
-    [0, 50],
-    [1, 50],
-    [0, 49],
-    [1, 49],
-    [2, 49],
-    [3, 49],
-    [4, 49],
-    [5, 49],
-    [0, 48],
-    [1, 48],
-    [2, 48],
-    [3, 48],
-    [4, 48],
-    [5, 48],
-    [6, 48],
-    [7, 48],
-    [8, 48],
-    [9, 48],
-  ].map(([page, level]) =>
+  let arr = new Array();
+  let levels = Array.from({length: 50}, (_, i) => i + 1);
+  for(let i = 0; i < 15; i++){
+    arr.push(...(levels.map(level => [i, level])));
+  }
+
+  const promises = arr.map(([page, level]) =>
     whatever(`${PLAY_DATA_URL}/mu_lv.html?page=${page}&level=${level}`, level)
   );
 
@@ -179,14 +166,14 @@ async function wapper() {
     }
   }
   </style>
-  <table class="pokuraTable profileTable"><tr><td>プレーヤー名</td><td>${player}</td></tr><tr><td>ポックラ</td><td>${(
+  <table class="pokuraTable profileTable"><tr><td>플레이어 명</td><td>${player}</td></tr><tr><td>팝 클래스</td><td>${(
       Math.floor(avg * 100) / 100
-    ).toFixed(2)}</td></tr><tr><td>+0.01まであと</td><td>${Math.ceil(
+    ).toFixed(2)}</td></tr><tr><td>+0.01까지 앞으로</td><td>${Math.ceil(
       ((1 - ((avg * 100) % 1)) * 5440 * 50) / 100
     )}</td></tr></table>
   <div class="pokura">
   <table class="pokuraTable">
-    <tr><th>LV</th><th>ジャンル</th><th>曲名</th><th>スコア</th><th>メダル</th><th>ポックラ</th></tr>
+    <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th></tr>
     ${s
       .slice(0, 25)
       .map(
@@ -198,7 +185,7 @@ async function wapper() {
       .join("")}
   </table>
   <table class="pokuraTable">
-    <tr><th>LV</th><th>ジャンル</th><th>曲名</th><th>スコア</th><th>メダル</th><th>ポックラ</th></tr>
+    <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th></tr>
     ${s
       .slice(25)
       .map(
@@ -210,7 +197,7 @@ async function wapper() {
       .join("")}
   </table>
   </div>
-  <div class="footnote">ポックラスクリプト${VERSION}</div>
+  <div class="footnote">팝 클래스 스크립트${VERSION}</div>
   `;
 
   document.body.innerHTML = "";
