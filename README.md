@@ -13,7 +13,7 @@ javascript: void !function(e){var t=e.createElement("script");t.type="text/javas
 
 ![add script to bookmark](readme_1.png)
 
-2. [팝픈 웹페이지](https://p.eagate.573.jp/game/popn/peace/p/playdata/index.html)에서 로그인 뒤, 북마크를 클릭합니다.
+2. [팝픈 웹페이지](https://p.eagate.573.jp/game/popn/unilab/playdata/index.html)에서 로그인 뒤, 북마크를 클릭합니다.
 
 # Contribute
 
