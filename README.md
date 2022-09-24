@@ -31,4 +31,4 @@ yarn build // or yarn build:watch
 
 ## PR때 주의점
 
-github상의 파일을 호스트하는 CDN[jsdelivr](https://cdn.jsdelivr.net/) 를 사용해 배포하고 있으므로, 'dist/bundle.js'도 함께 커밋해 주세요.
+github상의 파일을 호스트하는 CDN [jsdelivr](https://cdn.jsdelivr.net/)를 사용해 배포하고 있으므로, 'dist/bundle.js'도 함께 커밋해 주세요.
