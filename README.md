@@ -1,11 +1,11 @@
 # popn-class
 
-ポックラ一覧を出すスクリプト
+팝클래스에 포함되는 곡 목록을 보여주는 스크립트입니다.
 ![example](readme_0.png)
 
-# 使い方
+# 사용 방법
 
-1. 次のスクリプトをブックマークに追加する
+1. 다음의 스크립트를 북마크에 추가해주세요.
 
 ```
 javascript: void !function(e){var t=e.createElement("script");t.type="text/javascript",t.src="///cdn.jsdelivr.net/gh/sonohoshi/popn-class/dist/bundle.js",e.head.appendChild(t)}(document);
@@ -13,9 +13,11 @@ javascript: void !function(e){var t=e.createElement("script");t.type="text/javas
 
 ![add script to bookmark](readme_1.png)
 
-2. [ポップンのサイト](https://p.eagate.573.jp/game/popn/peace/p/playdata/index.html)にログインして、先のブックマークをクリックする。
+2. [팝픈 웹페이지](https://p.eagate.573.jp/game/popn/peace/p/playdata/index.html)에서 로그인 뒤, 북마크를 클릭합니다.
 
 # Contribute
+
+Pull Request로 부탁드려요.
 
 ## Build
 
@@ -25,10 +27,8 @@ yarn build // or yarn build:watch
 
 ## Test
 
-ユニットテストを作ってくださる方大歓迎です><
+유닛테스트가 없습니다... 수동으로 테스트 해주셔야 합니다.
 
-今はないので手動でテストしてください。
+## PR때 주의점
 
-## Creating a PR
-
-github 上のファイルをホストするCDN[jsdelivr](https://cdn.jsdelivr.net/)を使って配布していますので、`dist/bundle.js`も一緒にコミットしてください。
+github상의 파일을 호스트하는 CDN[jsdelivr](https://cdn.jsdelivr.net/) 를 사용해 배포하고 있으므로, 'dist/bundle.js'도 함께 커밋해 주세요.
