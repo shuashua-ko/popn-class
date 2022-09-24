@@ -1,7 +1,8 @@
 # popn-class
 
 팝클래스에 포함되는 곡 목록을 보여주는 스크립트입니다.
-![example](readme_0.png)
+![example](https://user-images.githubusercontent.com/48484989/192114398-5cca3b43-75c2-49a1-8d09-57966b8f37a8.png)
+
 
 # 사용 방법
 
