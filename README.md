@@ -17,7 +17,7 @@ javascript: void !function(e){var t=e.createElement("script");t.type="text/javas
 
 # Contribute
 
-Pull Request로 부탁드려요.
+Issue 혹은 Pull Request로 부탁드려요.
 
 ## Build
 
