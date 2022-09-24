@@ -19,6 +19,12 @@ javascript: void !function(e){var t=e.createElement("script");t.type="text/javas
 
 Issue 혹은 Pull Request로 부탁드려요.
 
+## Dependencies
+
+1. yarn
+2. webpack
+3. webpack-cli
+
 ## Build
 
 ```
