@@ -1,7 +1,7 @@
 async function wapper() {
   let domparser = new DOMParser();
 
-  const VERSION = "v0.1 by kimsm";
+  const VERSION = "v0.2 by kimsm";
   console.log("Running popn class script", VERSION, "\nPLZ wait a minute...");
 
   const MEDAL_BONUS = {
