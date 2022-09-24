@@ -72,10 +72,10 @@ async function wapper() {
       });
   }
 
-  const arr = Array;
-  const levels = Array(50).keys();
+  let arr = new Array();
+  let levels = Array.from({length: 50}, (_, i) => i + 1);
   for(let i = 0; i < 15; i++){
-    arr.apply(levels.map(level => [i, level]));
+    arr.push(...(levels.map(level => [i, level])));
   }
 
   const promises = arr.map(([page, level]) =>
