@@ -9,7 +9,7 @@
 1. 다음의 스크립트를 북마크에 추가해주세요.
 
 ```
-javascript: void !function(e){var t=e.createElement("script");t.type="text/javascript",t.src="///cdn.jsdelivr.net/gh/sonohoshi/popn-class/dist/bundle.js",e.head.appendChild(t)}(document);
+javascript: void !function(e){var t=e.createElement("script");t.type="text/javascript",t.src="///cdn.jsdelivr.net/gh/sonohoshi/popn-class@v0.2/dist/bundle.js",e.head.appendChild(t)}(document);
 ```
 
 ![add script to bookmark](readme_1.png)
