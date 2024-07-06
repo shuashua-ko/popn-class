@@ -1,7 +1,7 @@
 async function wapper() {
   let domparser = new DOMParser();
 
-  const VERSION = "v0.2 by kimsm";
+  const VERSION = "v0.21 by shuashua";
   console.log("Running popn class script", VERSION, "\nPLZ wait a minute...");
 
   const MEDAL_BONUS = {
@@ -73,8 +73,8 @@ async function wapper() {
   }
 
   let arr = new Array();
-  let levels = Array.from({length: 50}, (_, i) => i + 1);
-  for(let i = 0; i < 15; i++){
+  let levels = [49, 50];
+  for(let i = 0; i < 5; i++){
     arr.push(...(levels.map(level => [i, level])));
   }
 
