@@ -74,7 +74,7 @@ async function wapper() {
 
   let arr = new Array();
   let levels = [49, 50];
-  for(let i = 0; i < 5; i++){
+  for(let i = 0; i < 4; i++){
     arr.push(...(levels.map(level => [i, level])));
   }
 
@@ -94,9 +94,12 @@ async function wapper() {
   const s = (await Promise.all(promises))
     .flat()
     .sort((a, b) => b.point - a.point)
-    .slice(0, 50);
-  console.log({ s })
-  const avg = s.reduce((acc, cur) => acc + cur.point, 0) / 50;
+    .slice(0, 70);
+  const mainList = s.slice(0, 50);
+  const subList = s.slice(50);
+  console.log({ mainList })
+  console.log({ subList })
+  const avg = mainList.reduce((acc, cur) => acc + cur.point, 0) / 50;
 
   const divEl = document.createElement("div");
   divEl.id = "pokkura";
@@ -141,6 +144,10 @@ async function wapper() {
     color: gray;
     text-align: center;
   }
+  span {
+    display: flex; 
+    justify-content: center
+  }
   @media (max-width: 768px) {
     .pokura {
       flex-direction: column;
@@ -174,7 +181,7 @@ async function wapper() {
   <div class="pokura">
   <table class="pokuraTable">
     <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th></tr>
-    ${s
+    ${mainList
       .slice(0, 25)
       .map(
         (x) =>
@@ -186,7 +193,7 @@ async function wapper() {
   </table>
   <table class="pokuraTable">
     <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th></tr>
-    ${s
+    ${mainList
       .slice(25)
       .map(
         (x) =>
@@ -196,6 +203,20 @@ async function wapper() {
       )
       .join("")}
   </table>
+  <div>
+    <span>팝클 후보군 리스트</span>
+    <table class="pokuraTable">
+      <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th></tr>
+      ${subList
+        .map(
+            (x) =>
+                `<tr><td>${x.level}</td><td>${x.genre}</td><td>${x.song}</td><td>${x.score
+                }</td><td><img src="${MEDAL_IMAGE_URL}/meda_${x.medal
+                }.png"></td><td>${x.point.toFixed(2)}</td></tr>`
+        )
+        .join("")}
+    </table>
+  </div>
   </div>
   <div class="footnote">팝 클래스 스크립트${VERSION}</div>
   `;
