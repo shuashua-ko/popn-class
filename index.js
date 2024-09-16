@@ -74,7 +74,7 @@ async function wapper() {
 
   let arr = new Array();
   let levels = [49, 50];
-  for(let i = 0; i < 4; i++){
+  for(let i = 0; i < 6; i++){
     arr.push(...(levels.map(level => [i, level])));
   }
 
