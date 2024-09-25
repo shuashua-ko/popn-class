@@ -1,7 +1,7 @@
-async function wrapper() {
+async function wrapper(lvs = 49, lve = 50) {
   let domparser = new DOMParser();
 
-  const VERSION = "v0.25 by shuashua";
+  const VERSION = "v0.30 by shuashua";
   console.log("Running popn class script", VERSION, "\nPLZ wait a minute...");
 
   const MEDAL_BONUS = {
@@ -33,6 +33,17 @@ async function wrapper() {
     })
   }
 
+  function getMaxOptionValue(url, level) {
+    return fetch(url)
+      .then(resToText)
+      .then((text) => domparser.parseFromString(text, "text/html"))
+      .then((doc) => doc.querySelector("#s_page").options)
+      .then((options) => Array.from(options).map(function(option) {
+        return parseInt(option.value, 10);
+      }))
+      .then((values) => [level, Math.max(...values)]);
+  }
+
   function whatever(url, level) {
     return fetch(url)
       .then(resToText)
@@ -46,7 +57,7 @@ async function wrapper() {
             li.children[3].firstChild.src
               .replace(`${MEDAL_IMAGE_URL}/meda_`, "")
               .replace(".png", ""),
-            li.firstElementChild.lastElementChild.textContent,
+            li.firstElementChild.children[2].textContent,
             li.firstElementChild.firstElementChild.textContent,
           ])
           .map(([score, medal, genre, song]) => {
@@ -72,10 +83,17 @@ async function wrapper() {
       });
   }
 
-  let arr = new Array();
-  let levels = [49, 50];
-  for(let i = 0; i < 6; i++){
-    arr.push(...(levels.map(level => [i, level])));
+  console.log(lvs);
+  console.log(lve);
+  let arr = [];
+  const levels = Array.from({ length: lve - lvs + 1 }, (_, i) => i + lvs);
+  let levelAndPages = await Promise.all(levels.map((lv) => getMaxOptionValue(`${PLAY_DATA_URL}/mu_lv.html?page=0&lv=${lv}&sort=none&sort_type=none`, lv)));
+
+  console.log(`test result : ${levelAndPages}`);
+  for (const [lv, page] of levelAndPages) {
+    for (let i = 0; i <= page; i++) {
+      arr.push([i, lv]);
+    }
   }
 
   const promises = arr.map(([page, level]) =>
@@ -93,7 +111,12 @@ async function wrapper() {
 
   const s = (await Promise.all(promises))
     .flat()
-    .sort((a, b) => b.point - a.point)
+    .sort((a, b) => {
+      if (a.point === b.point) {
+        return b.score - a.score;
+      }
+      return b.point - a.point;
+    })
     .slice(0, 70);
   const mainList = s.slice(0, 50);
   const subList = s.slice(50);
@@ -225,4 +248,4 @@ async function wrapper() {
   document.body.appendChild(divEl);
 }
 
-wrapper();
+wrapper(lvs, lve);
