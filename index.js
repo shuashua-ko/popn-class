@@ -37,10 +37,15 @@ async function wrapper(lvs = 49, lve = 50) {
     return fetch(url)
       .then(resToText)
       .then((text) => domparser.parseFromString(text, "text/html"))
-      .then((doc) => doc.querySelector("#s_page").options)
-      .then((options) => Array.from(options).map(function(option) {
-        return parseInt(option.value, 10);
-      }))
+      .then((doc) => {
+        const page = doc.querySelector("#s_page");
+        return page && page.options ? page.options : [];
+      })
+      .then((options) => {
+        return options.length > 0 ? Array.from(options).map(function(option) {
+          return parseInt(option.value, 10);
+        }) : [0];
+      })
       .then((values) => [level, Math.max(...values)]);
   }
 
