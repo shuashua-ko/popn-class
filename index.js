@@ -1,7 +1,7 @@
-async function wapper() {
+async function wrapper() {
   let domparser = new DOMParser();
 
-  const VERSION = "v0.21 by shuashua";
+  const VERSION = "v0.24 by shuashua";
   console.log("Running popn class script", VERSION, "\nPLZ wait a minute...");
 
   const MEDAL_BONUS = {
@@ -19,9 +19,9 @@ async function wapper() {
     none: 0,
   };
 
-  const PLAY_DATA_URL = "https://p.eagate.573.jp/game/popn/unilab/playdata";
+  const PLAY_DATA_URL = "https://p.eagate.573.jp/game/popn/jamfizz/playdata";
   const MEDAL_IMAGE_URL =
-    "https://eacache.s.konaminet.jp/game/popn/unilab/images/p/common/medal";
+    "https://eacache.s.konaminet.jp/game/popn/jamfizz/images/p/common/medal";
 
   function resToText(res) {
     return res.arrayBuffer().then((buffer) => {
@@ -225,4 +225,4 @@ async function wapper() {
   document.body.appendChild(divEl);
 }
 
-wapper();
+wrapper();
