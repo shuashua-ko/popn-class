@@ -1,7 +1,7 @@
 async function wrapper() {
   let domparser = new DOMParser();
 
-  const VERSION = "v0.24 by shuashua";
+  const VERSION = "v0.25 by shuashua";
   console.log("Running popn class script", VERSION, "\nPLZ wait a minute...");
 
   const MEDAL_BONUS = {
@@ -79,7 +79,7 @@ async function wrapper() {
   }
 
   const promises = arr.map(([page, level]) =>
-    whatever(`${PLAY_DATA_URL}/mu_lv.html?page=${page}&level=${level}`, level)
+    whatever(`${PLAY_DATA_URL}/mu_lv.html?page=${page}&lv=${level}&sort=none&sort_type=none`, level)
   );
 
   const player = await fetch(`${PLAY_DATA_URL}/index.html`)

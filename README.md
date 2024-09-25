@@ -4,7 +4,7 @@
 코나미 베이직 코스에 가입되어있지 않으면 곡 데이터를 가져올 수 없어 사용이 불가능합니다.
 ![example](https://user-images.githubusercontent.com/48484989/192114398-5cca3b43-75c2-49a1-8d09-57966b8f37a8.png)
 
-# 0.24 update
+# 0.25 update
 * 잼앤피즈 대응
 
 # 0.21 update
