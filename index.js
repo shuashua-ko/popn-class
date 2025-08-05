@@ -49,6 +49,24 @@ async function wrapper(lvs = 49, lve = 50) {
       .then((values) => [level, Math.max(...values)]);
   }
 
+  function getRemainScore(level, score, medal) {
+    const s = parseInt(score, 10);
+    const bonus = MEDAL_BONUS[medal];
+
+    const T = 10000 * level + s - 50000 + bonus;
+
+    const X = (100 * T) / 5440;
+    const currentFloor = Math.floor(X);
+
+    const nextFloor = currentFloor + 1;
+
+    const T_needed = (nextFloor * 5440) / 100;
+
+    const delta = Math.ceil(T_needed - T);
+
+    return delta > 0 ? delta : 0;
+  }
+
   function whatever(url, level) {
     return fetch(url)
       .then(resToText)
@@ -83,6 +101,8 @@ async function wrapper(lvs = 49, lve = 50) {
                         MEDAL_BONUS[medal])) /
                     5440
                   ) / 100,
+              remain:
+                getRemainScore(level, score, medal)
             };
           });
       });
@@ -122,7 +142,7 @@ async function wrapper(lvs = 49, lve = 50) {
       }
       return b.point - a.point;
     })
-    .slice(0, 70);
+    .slice(0, 75);
   const mainList = s.slice(0, 50);
   const subList = s.slice(50);
   console.log({ mainList })
@@ -208,39 +228,39 @@ async function wrapper(lvs = 49, lve = 50) {
     )}</td></tr></table>
   <div class="pokura">
   <table class="pokuraTable">
-    <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th></tr>
+    <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th><th>+0.01</th></tr>
     ${mainList
       .slice(0, 25)
       .map(
         (x) =>
           `<tr><td>${x.level}</td><td>${x.genre}</td><td>${x.song}</td><td>${x.score
           }</td><td><img src="${MEDAL_IMAGE_URL}/meda_${x.medal
-          }.png"></td><td>${x.point.toFixed(2)}</td></tr>`
+          }.png"></td><td>${x.point.toFixed(2)}</td><td>${x.remain}</td></tr>`
       )
       .join("")}
   </table>
   <table class="pokuraTable">
-    <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th></tr>
+    <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th><th>+0.01</th></tr>
     ${mainList
       .slice(25)
       .map(
         (x) =>
           `<tr><td>${x.level}</td><td>${x.genre}</td><td>${x.song}</td><td>${x.score
           }</td><td><img src="${MEDAL_IMAGE_URL}/meda_${x.medal
-          }.png"></td><td>${x.point.toFixed(2)}</td></tr>`
+          }.png"></td><td>${x.point.toFixed(2)}</td><td>${x.remain}</td></tr>`
       )
       .join("")}
   </table>
   <div>
     <span>팝클 후보군 리스트</span>
     <table class="pokuraTable">
-      <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th></tr>
+      <tr><th>LV</th><th>장르</th><th>곡명</th><th>점수</th><th>메달</th><th>팝 클래스</th><th>+0.01</th></tr>
       ${subList
         .map(
             (x) =>
                 `<tr><td>${x.level}</td><td>${x.genre}</td><td>${x.song}</td><td>${x.score
                 }</td><td><img src="${MEDAL_IMAGE_URL}/meda_${x.medal
-                }.png"></td><td>${x.point.toFixed(2)}</td></tr>`
+                }.png"></td><td>${x.point.toFixed(2)}</td><td>${x.remain}</td></tr>`
         )
         .join("")}
     </table>
